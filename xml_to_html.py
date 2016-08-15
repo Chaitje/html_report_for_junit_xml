@@ -50,20 +50,22 @@ if __name__ == "__main__":
 			if file.endswith('xml'):
 				if file not in xml_files:
 					xml_files.append(file)
+					print('voor nu: aantal xmls gevonden '+ str(len(xml_files)))
 		if len(xml_files)==0:
 			time.sleep(2)
 		else:
-			if extra_turn == True:
-				files_found = True
-			else:
+			if extra_turn == False:
+				time.sleep(6)
 				extra_turn = True
-				time.sleep(5)
+			elif extra_turn == True:
+				files_found = True
+	print('Totaal aantal xmls gevonden '+ str(len(xml_files)))
 	for file_name in xml_files:
-
 		
 		#Parse the xml and write the html file
 
-		html_file_name = working_path+'html_test_report_' + datetime.datetime.strftime(datetime.datetime.now(), '%Y-%m-%d %H_%M_%S') + '.html'
+		html_file_name = working_path+'report_' + file_name + datetime.datetime.strftime(datetime.datetime.now(), '%Y-%m-%d %H_%M_%S') + '.html'
+		print ('file te doen: '+ html_file_name)
 
 		tree = ET.parse(fix_xml(working_path + file_name))
 		root = tree.getroot()
@@ -197,6 +199,7 @@ if __name__ == "__main__":
 			print >> f,  '</div></td></tr>'
 		print >> f, html_string_bottom
 		f.close()
+		print ('file gedaan: '+ html_file_name)
 	os.remove(working_path + 'fixed_xml.xml')
 	for file in xml_files:	
 		os.remove(working_path + file)
