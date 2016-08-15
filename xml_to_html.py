@@ -46,22 +46,17 @@ if __name__ == "__main__":
 	extra_turn = False
 	while files_found == False:
 		all_files_in_dir = os.listdir(working_path)
-		print(' de lijst: ' + str(files_found))
 		for file in all_files_in_dir:
-			print('de file heet ' + file)
 			if file.endswith('xml'):
 				if file not in xml_files:
 					xml_files.append(file)
 		if len(xml_files)==0:
 			time.sleep(2)
-			print('nog es pollen')
 		else:
 			if extra_turn == True:
 				files_found = True
-				('alles gevonden... en nu aan t werk')
 			else:
 				extra_turn = True
-				('iets gevonden... nog een keer voor de zekerheid...over 5sec')
 				time.sleep(5)
 	for file_name in xml_files:
 
