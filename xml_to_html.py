@@ -65,7 +65,6 @@ if __name__ == "__main__":
 		#Parse the xml and write the html file
 
 		html_file_name = working_path+'report_' + file_name + datetime.datetime.strftime(datetime.datetime.now(), '%Y-%m-%d %H_%M_%S') + '.html'
-		print ('file te doen: '+ html_file_name)
 
 		tree = ET.parse(fix_xml(working_path + file_name))
 		root = tree.getroot()
@@ -199,7 +198,7 @@ if __name__ == "__main__":
 			print >> f,  '</div></td></tr>'
 		print >> f, html_string_bottom
 		f.close()
-		print ('file gedaan: '+ html_file_name)
+		
 	os.remove(working_path + 'fixed_xml.xml')
 	for file in xml_files:	
 		os.remove(working_path + file)
