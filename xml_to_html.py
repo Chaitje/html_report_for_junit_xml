@@ -90,7 +90,7 @@ def combine_xmls(xml_files, working_path):
 	print >> xml_combine, declaration_string
 	print >> xml_combine, summary_string_total
 	for rest_string in rest_of_xmls:
-		print >> xml_combine, rest_string
+		print >> xml_combine, unicode(rest_string)
 	print >> xml_combine, end_string
 	xml_combine.close()
 	return 'combined_xml.xml'
