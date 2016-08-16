@@ -211,6 +211,8 @@ padding: 5px;
 	test_summary_tests = root.attrib['tests']
 	test_summary_skipped = root.attrib['skipped']
 	test_summary_passed = unicode(int(test_summary_tests) - int(test_summary_failures) - int(test_summary_errors) - int(test_summary_skipped))
+	test_summary_time = str(datetime.timedelta(root.attrib['time'])).seconds
+
  	
  	test_summary = """
  		<table class = \"summary\" ><tr>
@@ -219,8 +221,9 @@ padding: 5px;
  		<td class = "failed">Tests failed (failure) </td><td class = "failed">{2} </tr><tr>
  		<td class = "failed">Tests failed (error)   </td><td class = "failed">{3} </tr><tr>
  		<td class = "skipped">Tests skipped          </td><td class = "skipped">{4} </tr>
+ 		<td>Total time</td><td> {5} </tr><tr>
  		</table><table class ="details"><br/>
- 		""".format(test_summary_tests, test_summary_passed, test_summary_failures,test_summary_errors, test_summary_skipped)
+ 		""".format(test_summary_tests, test_summary_passed, test_summary_failures,test_summary_errors, test_summary_skipped, test_summary_time)
  	print >> f,  test_summary
 	for child in root:
 
