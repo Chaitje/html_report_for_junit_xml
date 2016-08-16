@@ -75,7 +75,7 @@ def combine_xmls(xml_files, working_path):
 
 		summary_string = '<testsuite errors="{0}" failures="{1}" name="{2}" skipped="{3}" tests="{4}" time="{5}">'.format(str(error), str(failure), name, str(skip), str(test),str(t))
 
-		with open(xml) as f:
+		with codecs.open(xml, encoding=UTF-8) as f:
 			all_lines = f.read()
 			reduced_xml = all_lines.replace(declaration_string,'')
 			reduced_xml = reduced_xml.replace(summary_string,'')
