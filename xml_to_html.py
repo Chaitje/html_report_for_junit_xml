@@ -211,7 +211,7 @@ padding: 5px;
 	test_summary_skipped = root.attrib['skipped']
 	test_summary_passed = unicode(int(test_summary_tests) - int(test_summary_failures) - int(test_summary_errors) - int(test_summary_skipped))
 	time_string = root.attrib['time']
-	test_summary_time = str(datetime.timedelta(seconds=float(time_string)).seconds)
+	test_summary_time = str(datetime.timedelta(seconds=int(float(time_string))))
 
 
  	
@@ -256,12 +256,10 @@ padding: 5px;
 			try:
 				error_msg = '<pre class = "error">' + child.find('error').text + '</pre>'
 				test_report_msg = test_report_msg + error_msg
-				#print >> f, newlines(error_msg) + '<br />'
 			except AttributeError:
 				failure_msg = unicode(child.find('failure').attrib['type']) + ': ' + unicode(child.find('failure').attrib['message'])
 				failure_msg = '<br /><div class = "error">' + failure_msg + '</div>'
 				test_report_msg = unicode(test_report_msg) + unicode(failure_msg)
-				#print >> f, newlines(unicode(failure_msg)) + '<br />'
 		test_report_msg = test_report_msg + newlines(scenario) + newlines(stdout_capture)
 
 		print >> f,  '<tr><td><div id="{}" style="display: none" href="javascript:toggle();">'.format(scenario_naam)
