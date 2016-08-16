@@ -134,7 +134,7 @@ if __name__ == "__main__":
 
 	html_file_name = working_path+'Test_report_'  + datetime.datetime.strftime(datetime.datetime.now(), '%Y-%m-%d %H_%M_%S') + '.html'
 
-	tree = ET.parse(fix_xml(working_path + file_name, working_path))
+	tree = ET.parse((working_path + file_name, working_path))
 	root = tree.getroot()
 	html_string = u""""""
 	html_string_top = """
