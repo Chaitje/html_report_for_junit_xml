@@ -55,6 +55,7 @@ def combine_xmls(xml_files, working_path):
 	
 
 	for xml in xml_files:
+		print("ik ga nu kijken naar {}".format(xml))
 		tree = ET.parse(xml)
 		root = tree.getroot()
 
