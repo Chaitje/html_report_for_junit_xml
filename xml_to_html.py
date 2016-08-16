@@ -73,9 +73,6 @@ def combine_xmls(xml_files, working_path):
 		time += float(t)
 
 		summary_string = '<testsuite errors="{0}" failures="{1}" name="{2}" skipped="{3}" tests="{4}" time="{5}">'.format(str(error), str(failure), name, str(skip), str(test),str(t))
-		print('de top regel is:')
-		print summary_string
-		print("==========================")
 
 		with open(xml) as f:
 			all_lines = f.read()
