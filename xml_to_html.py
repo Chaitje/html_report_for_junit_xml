@@ -55,7 +55,6 @@ def combine_xmls(xml_files, working_path):
 	
 
 	for xml in xml_files:
-		print("ik ga nu kijken naar {}".format(xml))
 		tree = ET.parse(xml)
 		root = tree.getroot()
 
@@ -211,7 +210,9 @@ padding: 5px;
 	test_summary_tests = root.attrib['tests']
 	test_summary_skipped = root.attrib['skipped']
 	test_summary_passed = unicode(int(test_summary_tests) - int(test_summary_failures) - int(test_summary_errors) - int(test_summary_skipped))
-	test_summary_time = str(datetime.timedelta(root.attrib['time'])).seconds
+	time_string = root.attrib['time']
+	test_summary_time = str(datetime.timedelta(seconds=float(time_string)).seconds)
+
 
  	
  	test_summary = """
@@ -263,7 +264,6 @@ padding: 5px;
 				#print >> f, newlines(unicode(failure_msg)) + '<br />'
 		test_report_msg = test_report_msg + newlines(scenario) + newlines(stdout_capture)
 
-		#test_report_msg = '<div id="toggleText2" style="display: none" href="javascript:toggle();">{}</div>'.format(unicode(test_report_msg))
 		print >> f,  '<tr><td><div id="{}" style="display: none" href="javascript:toggle();">'.format(scenario_naam)
 		print >> f,  test_report_msg
 		print >> f,  '</div></td></tr>'
