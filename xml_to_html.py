@@ -141,7 +141,7 @@ if __name__ == "__main__":
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>Test</title>
+		<title>Test Report</title>
 		<script language="javascript"> 
 function toggle(elementId) {
 	var ele = document.getElementById(elementId);
