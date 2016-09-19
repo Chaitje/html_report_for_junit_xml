@@ -32,6 +32,8 @@ def fix_xml(xml_files, working_path):
 			elif '\b' in line:
 				line_repl = line.replace('\b', '\\b')
 				print >> fx, line_repl
+			elif '\f' in line:
+				line_repl = line.replace('\f', '\\f')
 			else:
 				print >> fx, line
 		fx.close()
